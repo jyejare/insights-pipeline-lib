@@ -541,7 +541,7 @@ def configIQE(Map options) {
 
     writeVaultEnvVars(options)
     options['extraEnvVars'].each { key, value ->
-        writeEnv(key, value)
+        writeEnv(key, value instanceof Closure ? value(env) : value)
     }
 }
 
